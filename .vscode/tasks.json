@@ -6,11 +6,16 @@
         {
             "label": "compile debug",
             "type": "shell",
-            "command": "gcc ./zombiefier.c -o zombiefier",
+            "command": "gcc -g ./zombiefier.c -o zombiefier",
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "compile release",
+            "type": "shell",
+            "command": "gcc ./zombiefier.c -o zombiefier",
         }
     ]
 }

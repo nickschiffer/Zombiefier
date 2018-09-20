@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
         pid_t pid = fork();
         if (pid > 0){
             printf("parent PID: %d\n", getpid());
-            sleep(0.1);
+            sleep(1);
         }
         else if (pid == 0){
             printf("child  PID: %d\n\n", getpid());
