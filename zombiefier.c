@@ -20,7 +20,7 @@ void sigcont_handler(int signum){
 
 int main(int argc, char *argv[]) 
 {    
-     int parent_PID = 0;
+     pid_t parent_PID = 0;
      if (argc != 3){
          printf("Incorrect Format.\nUsage: zombiefier -n [numZombies].\n");
          return EXIT_FAILURE;
@@ -40,11 +40,11 @@ int main(int argc, char *argv[])
         pid_t pid = fork();
         if (pid > 0){
             parent_PID = getpid();
-            printf("parent PID: %d\n", parent_PID);
+            printf("parent PID: %d\n", (int)parent_PID);
             sleep(1);
         }
         else if (pid == 0){
-            printf("child  PID: %d\n\n", getpid());
+            printf("child  PID: %d\n\n", (int)getpid());
             exit(0);
         }
         else {
@@ -52,10 +52,10 @@ int main(int argc, char *argv[])
             return EXIT_FAILURE;
         }
     }
-    printf("Zombie Processes from parent PID #%d via ps:\n\n", parent_PID);
+    printf("Zombie Processes from parent PID #%d via ps:\n\n", (int)parent_PID);
     system(PSSCRIPT);
     signal(SIGCONT, sigcont_handler);
-    printf("\nSend \"kill -SIGCONT %d\" in separate console window to kill Zombies.\n", parent_PID);
+    printf("\nSend \"kill -SIGCONT %d\" in a separate console window to kill Zombies.\n", (int)parent_PID);
     while (1){
         sleep(1);
     }
