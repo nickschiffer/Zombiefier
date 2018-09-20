@@ -13,11 +13,11 @@
 int main(int argc, char *argv[]) 
 { 
      if (argc != 3){
-         printf("Incorrect Format.\nUsage: zombifier -n [numZombies].\n");
+         printf("Incorrect Format.\nUsage: zombiefier -n [numZombies].\n");
          return EXIT_FAILURE;
      }
      if (strcmp(argv[1],"-n") != 0){
-         printf("Incorrect tag Format.\nUsage: zombifier -n [numZombies].\n");
+         printf("Incorrect tag Format.\nUsage: zombiefier -n [numZombies].\n");
          return EXIT_FAILURE;
      }
      int numZombies = atoi(argv[2]);
