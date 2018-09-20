@@ -9,7 +9,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <signal.h>
-#include <string.h>
 
 #define PSSCRIPT "ps aux | awk \'\"[Zz]\" ~ $8 { printf(\"%s, PID = %d\\n\", $8, $2); }\'"
 
