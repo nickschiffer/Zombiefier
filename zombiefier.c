@@ -9,11 +9,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <signal.h>
+#include <string.h>
 
 #define PSSCRIPT "ps aux | awk \'\"[Zz]\" ~ $8 { printf(\"%s, PID = %d\\n\", $8, $2); }\'"
 
 void sigcont_handler(int signum){
-    printf("SIGCONT recieved for PID #%d\n",signum);
+    printf("\n\"%s\" signal successfully received. Exiting.\n",strsignal(signum));
     exit(signum);
 }
 
@@ -58,10 +59,5 @@ int main(int argc, char *argv[])
     while (1){
         sleep(1);
     }
-    // printf("Press t to view ps zombies output or e to exit.\n\n");
-    // char c = getchar();
-    // if (c == 't'){system(PSSCRIPT);}
-    // printf("\nZombies killed, exiting.\n");
-
 	return EXIT_SUCCESS; 
 }
