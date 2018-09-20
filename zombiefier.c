@@ -9,7 +9,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define TOPSCRIPT "ps aux | awk \'\"[Zz]\" ~ $8 { printf(\"%s, PID = %d\\n\", $8, $2); }\'"
+#define PSSCRIPT "ps aux | awk \'\"[Zz]\" ~ $8 { printf(\"%s, PID = %d\\n\", $8, $2); }\'"
 int main(int argc, char *argv[]) 
 { 
      if (argc != 3){
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
         pid_t pid = fork();
         if (pid > 0){
             printf("parent PID: %d\n", getpid());
-            sleep(1);
+            sleep(0.1);
         }
         else if (pid == 0){
             printf("child  PID: %d\n\n", getpid());
@@ -42,9 +42,9 @@ int main(int argc, char *argv[])
             return EXIT_FAILURE;
         }
     }
-    printf("Press t to view top zombies output or e to exit.\n\n");
+    printf("Press t to view ps zombies output or e to exit.\n\n");
     char c = getchar();
-    if (c == 't'){system(TOPSCRIPT);}
+    if (c == 't'){system(PSSCRIPT);}
     printf("\nZombies killed, exiting.\n");
 
 	return EXIT_SUCCESS; 
